@@ -11,7 +11,7 @@ class Entry
       :BADGRADSEM => "DOES NOT FOLLOW SPRING/FALL YEAR FORMAT"
   }
 
-  def initialize(line)
+  def initialize(line, log)
     @line = line
     @fields = line.split(" ")
     @id = 0
@@ -21,25 +21,29 @@ class Entry
     @short = ""
     @gradSem = ""
     @status = @@status[:INITIALIZED]
+    @log = log
   end
 
   #public methods check and sanitize data
   def validate_entry
     if @line.match(/[\d]{7}\s+[A-Za-z]*\s+[A-Za-z]*\s+([A-Za-z]*\s+)?[A-Za-z]*\s+F13\s+(S|F)\d\d/)
       set_fields
-      @status = @@status[:valid]
+      @status = @@status[:VALID]
     else
       validate_fields
     end
   end
 
-  private
-
   def toCSV
-    if @status == @@status[:valid]
-      "#{@id},#{@last.capitalize},#{@first.capitalize} #{@middle.capitalize},#{@short.downcase},#{@gradSem}\n"
+    if @status == @@status[:VALID]
+      name = "#{@first.capitalize} #{@middle.capitalize}"
+      "#{@id},#{@last.capitalize},#{name.strip},#{@short.downcase},#{@gradSem}\n"
+    else
+      @log.info("#{@status}: #{@line}")
     end
   end
+
+  private
 
   #TODO: Rename to describe that set_fields is for the nominal case
   def set_fields

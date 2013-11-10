@@ -5,19 +5,18 @@ require './Entry.rb'
 begin
 
   #get file passed from STDIN
-  file = ARGV[0]
+  file = "testcases/example.txt"
   log = Logger.new('log.txt')
 
   if File.exists?(file)
     #open file
-    file.open
+    f = File.open(file)
     #read in each line
-    file.each_line do |line|
+    f.each_line do |line|
       #create validator object, pass in line
-      entry = Entry.new(line)
-      if val.status == "VALID"
-
-      end
+      entry = Entry.new(line, log)
+      entry.validate_entry
+      puts entry.toCSV
     end
   else
     log.info("#{file} is not a valid file.")
