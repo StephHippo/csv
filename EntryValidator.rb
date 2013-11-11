@@ -1,3 +1,5 @@
+require 'logger'
+
 class EntryValidator
   attr_reader :id, :first, :middle, :last, :short, :gradSem, :status
 
@@ -75,6 +77,8 @@ class EntryValidator
       map_grad_sem(gradsem)
     end
   end
+
+  private
 
   def set_fields
     @id = @fields.first
