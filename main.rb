@@ -1,5 +1,4 @@
 require 'logger'
-require './EntryValidator.rb'
 require './Entry.rb'
 
 begin

@@ -5,9 +5,7 @@ class InvalidDataError < StandardError
     @message = message
   end
 
-  def check_initialized(obj)
-    unless obj.valid
-      raise UninitializedObjectError.new "Uninitialized object: #{obj.inspect}"
-    end
+  def check_valid(field, statusmsg)
+    raise UninitializedObjectError.new "Invalid Data Error: #{field}"
   end
 end
