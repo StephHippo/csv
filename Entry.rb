@@ -30,6 +30,7 @@ class Entry
       @@log.info("Successfully converted #{@line} to CSV format")
       "#{@id},#{@last.capitalize},#{@first.capitalize},#{@middle.capitalize},#{@short.downcase},#{@gradSem}\n"
     else
+      @@log.info("Invalid data. Did not convert #{@line}")
       ""
     end
   end
