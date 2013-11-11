@@ -60,12 +60,15 @@ class Entry
       @last = names[0]
       @first = names[1]
       @short = names[2]
-    end
-    if names.length == 4
+      @status = @@status[:VALID]
+    elsif names.length == 4
       @last = names[0]
       @first = names[1]
       @middle = names[2]
       @short = names[3]
+      @status = @@status[:VALID]
+    else
+      @status = @@status[:BADNAME]
     end
   end
 
@@ -100,7 +103,6 @@ class Entry
       names.delete(names.first)
       names = remove_invalid_chars(names)
       set_names(names)
-      @status = @@status[:VALID]
       @log.info("WARNING: Attempted rescue of name values from #{names} to last: #{@last}, first: #{@first}, middle: #{@middle}, short: #{@short}.")
     end
   end
