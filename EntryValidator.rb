@@ -33,7 +33,7 @@ class EntryValidator
     else
       sanitize_fields
     end
-    @status = @@status[:VALID]
+    return @status = @@status[:VALID]
   end
 
   #validate the id field, the name fields, and the grad semester

@@ -2,6 +2,7 @@ require 'simplecov'
 SimpleCov.start
 require './EntryValidator.rb'
 
+#Tested public methods only
 describe "Entry_Validator" do
   describe "validate_entry" do
     #GOOD DATA
@@ -62,31 +63,5 @@ describe "Entry_Validator" do
       @val.status.should == "DOES NOT FOLLOW SPRING/FALL YEAR FORMAT"
     end
   end
-
-  #describe "set_fields" do
-  #  it "should set the fields based on the fields arary" do
-  #    @val.instance_eval do
-  #      @val = EntryValidator.new("0123456 LONG            STUART            slong F13 S14")
-  #      @val.set_fields
-  #    end
-  #  end
-  #end
-
-  #describe "set_names" do
-  #  it "should set the names based on the presence of a middle name" do
-  #
-  #  end
-  #end
-
-  #describe "remove_invalid_chars" do
-  #  it "should remove invalid characters from names" do
-  #
-  #  end
-  #end
-
-  #describe "map_grad_sem" do
-  #
-  #end
-
 end
 

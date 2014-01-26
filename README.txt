@@ -8,8 +8,7 @@ Removes illegal characters and alerts user in the log that the program made chan
 Assumed that ids should go unchanged to ensure users stay unique
 If an id length was anything but 7 characters, log the error message and do not convert to CSV
 
-
-Decisions on local global error handling
+Decisions on local and global error handling
 Anything that could be sanitized was handled locally within routines
 A status variable notified the rest of the program
 
